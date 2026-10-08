@@ -1,50 +1,43 @@
+"use client"; // Next.js App Router mein useState use karne ke liye ye zaroori hai
+
+import { useState } from "react";
+
 export default function Nav() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="flex items-center gap-8">
-      <a
-        href="#services"
-        className="text-sm font-medium text-white hover:opacity-70 transition"
-      >
-        Services
-      </a>
+    <nav className="nav">
+      {/* 1. Desktop Links (Badi screen par dikhenge) */}
+      <div className="desktop-links">
+        <a href="#services" className="navLink">Services</a>
+        <a href="#work" className="navLink">Our Work</a>
+        <a href="#company" className="navLink">Company</a>
+        <a href="#contact" className="navLink">Contact</a>
+        <a href="#consulting" className="ctaButton">Free Consulting</a>
+      </div>
 
-      <a
-        href="#work"
-        className="text-sm font-medium text-white hover:opacity-70 transition"
+      {/* 2. Hamburger Button (Har screen par dikhega) */}
+      <button 
+        type="button" 
+        aria-label="Toggle menu" 
+        className="hamburger"
+        onClick={() => setIsOpen(!isOpen)} // Click par state toggle hogi
       >
-        Our Work
-      </a>
-
-      <a
-        href="#company"
-        className="text-sm font-medium text-white hover:opacity-70 transition"
-      >
-        Company
-      </a>
-
-      <a
-        href="#contact"
-        className="text-sm font-medium text-white hover:opacity-70 transition"
-      >
-        Contact
-      </a>
-
-      <a
-        href="#consulting"
-        className="rounded-md bg-[#d99b2b] px-6 py-3 text-sm font-semibold text-white hover:bg-[#c88d24] transition"
-      >
-        Free Consulting
-      </a>
-
-      <button
-        type="button"
-        aria-label="Open menu"
-        className="flex flex-col gap-1.5 ml-1"
-      >
-        <span className="block h-[2px] w-5 bg-white"></span>
-        <span className="block h-[2px] w-5 bg-white"></span>
-        <span className="block h-[2px] w-5 bg-white"></span>
+        <span className="hamburgerLine"></span>
+        <span className="hamburgerLine"></span>
+        <span className="hamburgerLine"></span>
       </button>
+
+      {/* 3. Dropdown Menu (Click karne par open hoga) */}
+      {isOpen && (
+        <div className="dropdownMenu">
+          <a href="#services" className="dropdownLink" onClick={() => setIsOpen(false)}>Services</a>
+          <a href="#work" className="dropdownLink" onClick={() => setIsOpen(false)}>Our Work</a>
+          <a href="#company" className="dropdownLink" onClick={() => setIsOpen(false)}>Company</a>
+          <a href="#contact" className="dropdownLink" onClick={() => setIsOpen(false)}>Contact</a>
+          <a href="#consulting" className="dropdownCta" onClick={() => setIsOpen(false)}>Free Consulting</a>
+        </div>
+      )}
     </nav>
   );
 }

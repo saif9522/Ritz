@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* =========================================
+   ROOT VARIABLES & THEME SETUP
+   ========================================= */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,21 +22,27 @@
   }
 }
 
+/* =========================================
+   GLOBAL STYLES
+   ========================================= */
 body {
-    font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: var(--background);
   color: var(--foreground);
-  /* font-family: Arial, Helvetica, sans-serif; */
 }
+
 .section {
-   background-color: #fff;
+  background-color: #fff;
 }
 
-.logo-image{
-   padding: 45px;
+.logo-image {
+    /* padding: 45px; */
+    width: 48px;
 }
 
-
+/* =========================================
+   HEADER & HERO SECTION
+   ========================================= */
 .Header-section {
   background-image: url("/hero.jpg");
   width: 100%;
@@ -48,31 +57,387 @@ body {
 .hero-text {
     position: absolute;
     bottom: 50%;
-    left: 100px;
+    left: 40px;
 }
-.hero-text h2{
+
+.hero-text h2 {
   font-weight: 600;
   padding-bottom: 10px;
 }
-.hero-text p{
+
+.hero-text p {
   font-weight: 500;
   font-size: 18px;
-  list-style: 31px;
+  line-height: 31px; /* Fixed typo: list-style -> line-height */
 }
-.hero-text h2 span{
+
+.hero-text h2 span {
   color: #10153e;
 }
 
-/* .hero-banner {
-    position: relative;
-    width: 100%;
-    height: auto;
+/* =========================================
+   NAVIGATION SECTION
+   ========================================= */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
-.hero-image{
-   position: absolute;
-   width: 100%;
-   top: 0;
-   left: 0;
-} */
+.navLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
 
+.navLink:hover {
+  opacity: 0.7;
+}
+
+.ctaButton {
+  border-radius: 0.375rem;
+  background-color: #d99b2b;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #c88d24;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-left: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburgerLine {
+  display: block;
+  height: 2px;
+  width: 1.25rem;
+  background-color: #ffffff;
+}
+
+/* =========================================
+   NAVIGATION SECTION
+   ========================================= */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative; /* Dropdown ko align karne ke liye zaroori hai */
+}
+
+.desktop-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.navLink:hover {
+  opacity: 0.7;
+}
+
+.ctaButton {
+  border-radius: 0.375rem;
+  background-color: #d99b2b;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #c88d24;
+}
+
+/* Hamburger Styling */
+.hamburger {
+  display: flex; /* Ab yeh har screen par dikhega */
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-left: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburgerLine {
+  display: block;
+  height: 2px;
+  width: 1.25rem;
+  background-color: #ffffff;
+}
+
+/* Dropdown Menu Styling (Click par open hone wala) */
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 1rem;
+  background-color: #ffffff;
+  min-width: 200px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  z-index: 50;
+}
+
+.dropdownLink {
+  color: #1e293b; /* Dark text for white background */
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.dropdownLink:hover {
+  color: #d99b2b; /* Hover par orange color */
+}
+
+.dropdownCta {
+  background-color: #d99b2b;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.dropdownCta:hover {
+  background-color: #c88d24;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES (Mobile View)
+   ========================================= */
+
+/* Mobile & Tablet View (1023px se choti screen) */
+@media (max-width: 1023px) {
+  /* Mobile par top ke inline links chhupa do, sirf hamburger dikhega */
+  .desktop-links {
+    display: none;
+  }
+}
+
+/* Desktop View (1024px aur usse badi screen) */
+@media (min-width: 1024px) {
+  /* Desktop par bhi hamburger dikhega, isliye yahan koi hide rule nahi hai */
+  
+  /* Why Section Desktop Layout (jo pehle set kiya tha) */
+  .why-container {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .why-text-section, 
+  .why-image-section, 
+  .why-stats-grid {
+    width: 33.333333%;
+  }
+  
+  .why-heading { font-size: 2.25rem; }
+  .why-paragraph { font-size: 1.125rem; }
+  .why-stat-number { font-size: 3rem; }
+}
+
+/* =========================================
+   WHY SECTION 
+   ========================================= */
+.why-section {
+    background-color: #fff;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+}
+
+.why-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.why-text-section {
+  flex: 1;
+  width: 100%;
+  text-align: left;
+}
+
+.why-heading {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.why-paragraph {
+  color: #475569;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.why-font-semibold {
+  font-weight: 600;
+}
+
+.why-orange-text {
+  color: #f97316;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.why-cta-button {
+  border: 1px solid #f97316;
+  color: #1e293b;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.why-cta-button:hover {
+  background-color: #fff7ed;
+}
+
+.why-image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.why-image {
+  width: 16rem;
+  height: auto;
+  object-fit: contain;
+}
+
+.why-stats-grid {
+  flex: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.why-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.why-border-bottom {
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.why-border-right {
+  border-right: 1px solid #cbd5e1;
+}
+
+.why-stat-number {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  margin-bottom: 0.5rem;
+}
+
+.why-stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #475569;
+  text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES (Mobile vs Desktop)
+   ========================================= */
+
+/* 1. Mobile & Tablet View (1023px se choti screen) */
+@media (max-width: 1023px) {
+  .navLink, 
+  .ctaButton {
+    display:block; /* Links aur Button chhup jayenge */
+  }
+  
+  .hamburger {
+    display: flex; /* Sirf Hamburger (3 lines) dikhega */
+  }
+  .hero-text {
+    left: 20px;
+}
+.Header-section {
+   
+    padding: 20px 0px;
+}
+}
+
+/* 2. Desktop View (1024px aur usse badi screen) */
+@media (min-width: 1024px) {
+  .navLink, 
+  .ctaButton {
+    display: block; /* Links aur Button wapas dikhne lagenge */
+  }
+  
+
+
+  /* Why Section Desktop Layout */
+  .why-container {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .why-text-section, 
+  .why-image-section, 
+  .why-stats-grid {
+    width: 33.333333%; /* 3 columns layout */
+  }
+  
+  .why-heading {
+    font-size: 2.25rem;
+  }
+  
+  .why-paragraph {
+    font-size: 1.125rem;
+  }
+  
+  .why-stat-number {
+    font-size: 3rem;
+  }
+
+  
+}
